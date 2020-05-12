@@ -16,5 +16,6 @@ namespace bankSoftForm
         PERIOADA_INCORECT = 5,
         TELEFON_INCORECT = 6,
         EMAIL_INCORECT = 7,
+        NO_RASPUNS_TERMENI = 8,
     }
 }
