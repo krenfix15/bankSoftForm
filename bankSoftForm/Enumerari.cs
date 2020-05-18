@@ -6,16 +6,18 @@ using System.Threading.Tasks;
 
 namespace bankSoftForm
 {
+    [Flags]
     public enum CodEroare
     {
         CORECT = 0,
         NUME_INCORECT = 1,
         PRENUME_INCORECT = 2,
-        CNP_INCORECT = 3,
-        SOLD_INCORECT = 4,
-        PERIOADA_INCORECT = 5,
-        TELEFON_INCORECT = 6,
-        EMAIL_INCORECT = 7,
-        NO_RASPUNS_TERMENI = 8,
+        CNP_INCORECT = 4,
+        SOLD_INCORECT = 16,
+        PERIOADA_INCORECT = 32,
+        TELEFON_INCORECT = 64,
+        EMAIL_INCORECT = 128,
+        NO_RASPUNS_TERMENI = 256,
+        ANUL_NASTERII_NESELECTAT = 512
     }
 }
