@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 namespace LibrarieClient
 {
+    [Serializable]
     public class Client
     {
         //constante
@@ -23,7 +24,14 @@ namespace LibrarieClient
         public string CNP { get; set; }
         public string Telefon { get; set; }
         public string Email { get; set; }
-        public string NumeComplet { get { return Nume + " " + Prenume; } }
+        public DateTime DataDepunere { get; set; }
+        public DateTime DataFinalPerioada
+        {
+            get
+            {
+                return DataDepunere.AddMonths(Int32.Parse(perioadaDepozitare));
+            }
+        }
         public List<string> Carduri { get; set; }
         public raspunsTermeni raspunsTRM { get; set; }
         public int AnNastere{ get; set; }
@@ -106,7 +114,7 @@ namespace LibrarieClient
 
         public string ConversieLaSir()
         {          
-            string sirConversie = string.Format("\n\n----------------------------------------------------------------\n\nID Client               :   {0}\nNume                   :    {1}\nPrenume              :    {2}\nCNP                     :   {3}\nAnul nașterii         :   {8}\nSold Curent          :   {4} LEI\nPerioada Depozit  :   {5} luni\nDobanda              :   {6}%\nCard                     :   {9}\n\nSold la finalul depozitului: {7} LEI.\n\n----------------------------------------------------------------\n", IDClient, Nume, Prenume, CNP, soldCont, perioadaDepozitare, Dobanda, getSoldFinalPerioada,AnNastere,CarduriAsString);
+            string sirConversie = string.Format("\n\n----------------------------------------------------------------\n\nID Client               :   {0}\nNume                   :    {1}\nPrenume              :    {2}\nCNP                     :   {3}\nAnul nașterii         :   {8}\nSold Curent          :   {4} LEI\nPerioada Depozit  :   {5} luni\nDobanda              :   {6}%\nCard                     :   {9}\n\nSold la finalul depozitului ({10}): {7} LEI.\n----------------------------------------------------------------\n", IDClient, Nume, Prenume, CNP, soldCont, perioadaDepozitare, Dobanda, getSoldFinalPerioada,AnNastere,CarduriAsString, DataFinalPerioada);
             return sirConversie;
         }
 
@@ -126,10 +134,14 @@ namespace LibrarieClient
 
         public string ConversieLaSir_PentruFisier()
         {
-            string s = string.Format("{1}{0}{2}{0}{3}{0}{4}{0}{5}{0}{6}{0}{7}{0}{8}{0}{9}{0}{10}",
-                SEPARATOR_PRINCIPAL_FISIER, IDClient.ToString(), (Nume ?? " NECUNOSCUT "), (Prenume ?? " NECUNOSCUT "), (CNP ?? " NECUNOSCUT "), AnNastere,(soldCont ?? " NECUNOSCUT "), (perioadaDepozitare ?? " NECUNOSCUT "), (Telefon ?? " NECUNOSCUT "), (Email ?? " NECUNOSCUT "), CarduriAsString);
+            string s = string.Format("{1}{0}{2}{0}{3}{0}{4}{0}{5}{0}{6}{0}{7}{0}{8}{0}{9}{0}{10}{0}{11}{0}{12}",
+                SEPARATOR_PRINCIPAL_FISIER, IDClient.ToString(), (Nume ?? " NECUNOSCUT "), (Prenume ?? " NECUNOSCUT "), (CNP ?? " NECUNOSCUT "), AnNastere,(soldCont ?? " NECUNOSCUT "), (perioadaDepozitare ?? " NECUNOSCUT "), (Telefon ?? " NECUNOSCUT "), (Email ?? " NECUNOSCUT "), CarduriAsString, DataDepunere, DataFinalPerioada);
 
             return s;
+        }
+        public override string ToString()
+        {
+            return ConversieLaSir_PentruFisier();
         }
     }
 }
