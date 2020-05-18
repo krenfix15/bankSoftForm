@@ -1,5 +1,6 @@
 ﻿using LibrarieClient;
 using System.Collections;
+using System.Collections.Generic;
 
 namespace NivelAccesDate
 {
@@ -7,10 +8,12 @@ namespace NivelAccesDate
     public interface IStocareData
     {
         void AddClient(Client s);
-        ArrayList GetClienti();
+        List<Client> GetClienti();
 
         Client GetClient(string nume, string prenume);
 
         bool UpdateClient(Client s);
+
+        List<Client> GetClientiActivi();
     }
 }

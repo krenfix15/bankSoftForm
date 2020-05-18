@@ -1,6 +1,7 @@
 ﻿using LibrarieClient;
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.IO;
 
 namespace NivelAccesDate
@@ -43,43 +44,10 @@ namespace NivelAccesDate
             }
         }
 
-        public LibrarieClient.Client[] GetClienti(out int nrClienti)
+       
+        public List <Client> GetClienti()
         {
-            LibrarieClient.Client[] clienti = new LibrarieClient.Client[PAS_ALOCARE];
-
-            try
-            {
-                // instructiunea 'using' va apela sr.Close()
-                using (StreamReader sr = new StreamReader(NumeFisier))
-                {
-                    string line;
-                    nrClienti = 0;
-
-                    //citeste cate o linie si creaza un obiect de tip Student pe baza datelor din linia citita
-                    while ((line = sr.ReadLine()) != null)
-                    {
-                        clienti[nrClienti++] = new LibrarieClient.Client(line);
-                        if (nrClienti == PAS_ALOCARE)
-                        {
-                            Array.Resize(ref clienti, nrClienti + PAS_ALOCARE);
-                        }
-                    }
-                }
-            }
-            catch (IOException eIO)
-            {
-                throw new Exception("Eroare la deschiderea fisierului. Mesaj: " + eIO.Message);
-            }
-            catch (Exception eGen)
-            {
-                throw new Exception("Eroare generica. Mesaj: " + eGen.Message);
-            }
-
-            return clienti;
-        }
-        public ArrayList GetClienti()
-        {
-            ArrayList clienti = new ArrayList();
+            List<Client> clienti = new List<Client>();
 
             try
             {
@@ -91,8 +59,8 @@ namespace NivelAccesDate
                     //citeste cate o linie si creaza un obiect de tip Student pe baza datelor din linia citita
                     while ((line = sr.ReadLine()) != null)
                     {
-                        Client s = new Client(line);
-                        clienti.Add(s);
+                        Client c = new Client(line);
+                        clienti.Add(c);
                     }
                 }
             }
@@ -139,7 +107,7 @@ namespace NivelAccesDate
 
         public bool UpdateClient(Client clientActualizat)
         {
-            ArrayList clienti = GetClienti();
+            List<Client> clienti = GetClienti();
             bool actualizareCuSucces = false;
             try
             {
@@ -173,6 +141,16 @@ namespace NivelAccesDate
 
             return actualizareCuSucces;
         }
-
+        public List<Client> GetClientiActivi()
+        {
+            List<Client> clienti = GetClienti();
+            List<Client> clientiActivi = new List<Client>();
+            foreach (Client c in clienti)
+            {
+                if (c.DataFinalPerioada > DateTime.Now)
+                    clientiActivi.Add(c);
+            }
+            return clientiActivi;
+        }
     }
 }
