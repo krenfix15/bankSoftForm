@@ -12,6 +12,15 @@ namespace bankSoftForm
 {
     public partial class bankSoft : Form
     {
+        //Constante 
+        const int CIFRE_CNP = 13;
+        const int CIFRE_TELEFON = 9;
+        const int MAX_PERIOADA = 1200;
+        const int MIN_PERIOADA = 3;
+        const int NO_ITEMS_CMB = -1;
+        const int WIDTH_WITHOUT_DATAGRID = 635;
+        const int WIDTH_WITH_DATAGRID = 1250;
+
         IStocareData adminClienti;
         List<string> carduriSelectate = new List<string>();
         public bankSoft()
@@ -228,7 +237,7 @@ namespace bankSoftForm
             }
 
             var isCNPNumeric = int.TryParse(CNP, out _);
-            if (CNP == "CNP" || CNP.Length!=13)
+            if (CNP == "CNP" || CNP.Length!=CIFRE_CNP)
             {
                 rezultatValidare |= CodEroare.CNP_INCORECT;
             }
@@ -240,18 +249,18 @@ namespace bankSoftForm
             }
 
             var isPerioadaNumeric = int.TryParse(perioada, out _);
-            if (perioada == "Perioada" || !isPerioadaNumeric || Int32.Parse(perioada)>1200)
+            if (perioada == "Perioada" || !isPerioadaNumeric || Int32.Parse(perioada)>MAX_PERIOADA || Int32.Parse(perioada)<MIN_PERIOADA)
             {
                 rezultatValidare |= CodEroare.PERIOADA_INCORECT;
             }
 
             var isTelefonNumeric = int.TryParse(telefon, out _);
-            if (telefon == "Telefon [+40]" || telefon.Length != 9 || !isTelefonNumeric)
+            if (telefon == "Telefon [+40]" || telefon.Length !=CIFRE_TELEFON || !isTelefonNumeric)
             {
                 rezultatValidare |= CodEroare.TELEFON_INCORECT;
             }
 
-            if (cmbAn.SelectedIndex == -1)
+            if (cmbAn.SelectedIndex == NO_ITEMS_CMB)
             {
                 rezultatValidare |= CodEroare.ANUL_NASTERII_NESELECTAT;
             }
@@ -311,7 +320,7 @@ namespace bankSoftForm
                 rdbNU.ForeColor = Color.Red;
             }
 
-            else if(rdbDA.Checked && cmbAn.SelectedIndex>-1)
+            else if(rdbDA.Checked && cmbAn.SelectedIndex>NO_ITEMS_CMB)
             {
                 c = new Client(textNume.Text, textPrenume.Text, textCNP.Text, textSold.Text, textPerioadaDep.Text, textTelefon.Text, textEmail.Text);          
                 c.raspunsTRM = GetRaspunsSelectat();
@@ -550,12 +559,12 @@ namespace bankSoftForm
             if (boolbtnDataGrid)
             {
                 boolbtnDataGrid = false;
-                this.Width = 1250;
+                this.Width = WIDTH_WITHOUT_DATAGRID;
             }
             else
             {
                 boolbtnDataGrid = true;
-                this.Width = 635;
+                this.Width = WIDTH_WITH_DATAGRID;
             }
         }
         private void AdaugaClientiInControlDataGridView(List<Client> clienti)
