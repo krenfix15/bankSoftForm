@@ -10,7 +10,7 @@ namespace NivelAccesDate
         void AddClient(Client s);
         List<Client> GetClienti();
 
-        Client GetClient(string nume, string prenume);
+        Client GetClient(string cnp);
 
         bool UpdateClient(Client s);
 

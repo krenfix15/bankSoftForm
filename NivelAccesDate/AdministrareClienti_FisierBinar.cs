@@ -78,7 +78,7 @@ namespace NivelAccesDate
             return clienti;
         }
 
-        public Client GetClient(string nume, string prenume)
+        public Client GetClient(string cnp)
         {
             try
             {
@@ -91,7 +91,7 @@ namespace NivelAccesDate
                     while ((line = sr.ReadLine()) != null)
                     {
                         Client client = new Client(line);
-                        if (client.Nume.Equals(nume) && client.Prenume.Equals(prenume))
+                        if (client.CNP.Equals(cnp))
                             return client;
                     }
                 }
@@ -111,6 +111,7 @@ namespace NivelAccesDate
         {
             List<Client> clienti = GetClienti();
             bool actualizareCuSucces = false;
+
             try
             {
                 BinaryFormatter b = new BinaryFormatter();
@@ -121,7 +122,7 @@ namespace NivelAccesDate
                     foreach (var clnt in clienti)
                     {
                         //serializare unui obiect
-                        if (clnt.IDClient == clientActualizat.IDClient)
+                        if (clnt.CNP == clientActualizat.CNP)
                         {
                             b.Serialize(sBinFile, clientActualizat);
                         }
@@ -148,7 +149,7 @@ namespace NivelAccesDate
             List<Client> clientiActivi = new List<Client>();
             foreach (Client c in clienti)
             {
-                if (c.DataFinalPerioada > DateTime.Now)
+                if (c.DATA_FINAL_PERIOADA > DateTime.Now)
                     clientiActivi.Add(c);
             }
             return clientiActivi;
