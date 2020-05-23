@@ -16,27 +16,27 @@ namespace LibrarieClient
         static Random numar = new Random();
 
         public static int nrClienti = 0;
-        public string soldCont { get; set; }
-        public string perioadaDepozitare { get; set; }
-        public int IDClient { get; set; }
-        public string Nume { get; set; }
-        public string Prenume { get; set; }
+        public string SOLD_CONT { get; set; }
+        public string PERIOADA_DEPOZITARE { get; set; }
+        public int ID_CLIENT { get; set; }
+        public string NUME { get; set; }
+        public string PRENUME { get; set; }
         public string CNP { get; set; }
-        public string Telefon { get; set; }
-        public string Email { get; set; }
-        public DateTime DataDepunere { get; set; }
-        public DateTime DataFinalPerioada
+        public string TELEFON { get; set; }
+        public string EMAIL { get; set; }
+        public DateTime DATA_DEPUNERE { get; set; }
+        public DateTime DATA_FINAL_PERIOADA
         {
             get
             {
-                return DataDepunere.AddMonths(Int32.Parse(perioadaDepozitare));
+                return DATA_DEPUNERE.AddMonths(Int32.Parse(PERIOADA_DEPOZITARE));
             }
         }
         public List<string> Carduri { get; set; }
-        public raspunsTermeni raspunsTRM { get; set; }
-        public int AnNastere{ get; set; }
 
-        public string CarduriAsString
+        public int AN_NASTERE{ get; set; }
+
+        public string CARDURI
         {
             get
             {
@@ -57,27 +57,27 @@ namespace LibrarieClient
 
         public Client()
         {
-            IDClient = (numar.Next(10000000, 100000000) + 165448401) / numar.Next(1, 15) + 13;
-            Nume = string.Empty;
-            Prenume = string.Empty;
+            ID_CLIENT = numar.Next(100000000, 1000000000);
+            NUME = string.Empty;
+            PRENUME = string.Empty;
             CNP = string.Empty;
-            soldCont = string.Empty;
-            perioadaDepozitare = string.Empty;
-            Telefon = string.Empty;
-            Email = string.Empty;
+            SOLD_CONT = string.Empty;
+            PERIOADA_DEPOZITARE = string.Empty;
+            TELEFON = string.Empty;
+            EMAIL = string.Empty;
             nrClienti++;
         }
 
         public Client(string _Nume, string _Prenume, string _CNP, string _soldCont, string _perioadaDepozitare, string _telefon, string _email)
         {
-            IDClient = (numar.Next(10000000, 100000000) + 165448401) / numar.Next(1, 15) + 13;
-            Nume = _Nume;
-            Prenume = _Prenume;
+            ID_CLIENT = numar.Next(100000000, 1000000000);
+            NUME = _Nume.ToUpper();
+            PRENUME = _Prenume.ToUpper();
             CNP = _CNP;
-            soldCont = _soldCont;
-            perioadaDepozitare = _perioadaDepozitare;
-            Telefon = _telefon;
-            Email = _email;
+            SOLD_CONT = _soldCont;
+            PERIOADA_DEPOZITARE = _perioadaDepozitare;
+            TELEFON = _telefon;
+            EMAIL = _email;
 
             nrClienti++;
         }
@@ -87,55 +87,48 @@ namespace LibrarieClient
             var dateFisier = linieFisier.Split(SEPARATOR_PRINCIPAL_FISIER);
 
             //ordinea de preluare a campurilor este data de ordinea in care au fost scrise in fisier prin apelul implicit al metodei ToString()
-            IDClient = Convert.ToInt32(dateFisier[(int)CampuriClient.ID]);
-            Nume = dateFisier[(int)CampuriClient.NUME];
-            Prenume = dateFisier[(int)CampuriClient.PRENUME];
+            ID_CLIENT = Convert.ToInt32(dateFisier[(int)CampuriClient.ID]);
+            NUME = dateFisier[(int)CampuriClient.NUME];
+            PRENUME = dateFisier[(int)CampuriClient.PRENUME];
             CNP = dateFisier[(int)CampuriClient.xCNP];
-            AnNastere = Int32.Parse(dateFisier[(int)CampuriClient.AN_NASTERE]);
-            soldCont = dateFisier[(int)CampuriClient.SOLD];
-            perioadaDepozitare = dateFisier[(int)CampuriClient.PERIOADADEPOZIT];
-            Telefon = dateFisier[(int)CampuriClient.TELEFON];
-            Email = dateFisier[(int)CampuriClient.EMAIL];
-
+            AN_NASTERE = Int32.Parse(dateFisier[(int)CampuriClient.AN_NASTERE]);
+            SOLD_CONT = dateFisier[(int)CampuriClient.SOLD];
+            PERIOADA_DEPOZITARE = dateFisier[(int)CampuriClient.PERIOADADEPOZIT];
+            TELEFON = dateFisier[(int)CampuriClient.TELEFON];
+            EMAIL = dateFisier[(int)CampuriClient.EMAIL];
             Carduri = new List<string>();
-            //adauga mai multe elemente in lista de discipline
+            //adauga mai multe elemente in lista de carduri
             Carduri.AddRange(dateFisier[(int)CampuriClient.CARDURI].Split(SEPARATOR_SECUNDAR_FISIER));
+            DATA_DEPUNERE = Convert.ToDateTime(dateFisier[(int)CampuriClient.DATADEPUNERE]);
             
             nrClienti++;
         }
-        private float Dobanda
+        public float DOBANDA
         {
             get
             {
-                return float.Parse(perioadaDepozitare) * 63 / 932 % 100;
+                return float.Parse(PERIOADA_DEPOZITARE) * 63 / 932 % 100;
             }
-        }
-
-
-        public string ConversieLaSir()
-        {          
-            string sirConversie = string.Format("\n\n----------------------------------------------------------------\n\nID Client               :   {0}\nNume                   :    {1}\nPrenume              :    {2}\nCNP                     :   {3}\nAnul nașterii         :   {8}\nSold Curent          :   {4} LEI\nPerioada Depozit  :   {5} luni\nDobanda              :   {6}%\nCard                     :   {9}\n\nSold la finalul depozitului ({10}): {7} LEI.\n----------------------------------------------------------------\n", IDClient, Nume, Prenume, CNP, soldCont, perioadaDepozitare, Dobanda, getSoldFinalPerioada,AnNastere,CarduriAsString, DataFinalPerioada);
-            return sirConversie;
         }
 
         public float addSumaSoldCont(float _sumaBani)
         {
-            float.Parse(soldCont += _sumaBani);
-            return float.Parse(soldCont);
+            float.Parse(SOLD_CONT += _sumaBani);
+            return float.Parse(SOLD_CONT);
         }
 
-        public float getSoldFinalPerioada
+        public float SOLD_FINAL
         {
             get
             {
-                return float.Parse(soldCont) + float.Parse(soldCont) * Dobanda / 100;
+                return float.Parse(SOLD_CONT) + float.Parse(SOLD_CONT) * DOBANDA / 100;
             }
         }
 
         public string ConversieLaSir_PentruFisier()
         {
             string s = string.Format("{1}{0}{2}{0}{3}{0}{4}{0}{5}{0}{6}{0}{7}{0}{8}{0}{9}{0}{10}{0}{11}{0}{12}",
-                SEPARATOR_PRINCIPAL_FISIER, IDClient.ToString(), (Nume ?? " NECUNOSCUT "), (Prenume ?? " NECUNOSCUT "), (CNP ?? " NECUNOSCUT "), AnNastere,(soldCont ?? " NECUNOSCUT "), (perioadaDepozitare ?? " NECUNOSCUT "), (Telefon ?? " NECUNOSCUT "), (Email ?? " NECUNOSCUT "), CarduriAsString, DataDepunere, DataFinalPerioada);
+                SEPARATOR_PRINCIPAL_FISIER, ID_CLIENT.ToString(), (NUME ?? " NECUNOSCUT "), (PRENUME ?? " NECUNOSCUT "), (CNP ?? " NECUNOSCUT "), AN_NASTERE,(SOLD_CONT ?? " NECUNOSCUT "), (PERIOADA_DEPOZITARE ?? " NECUNOSCUT "), (TELEFON ?? " NECUNOSCUT "), (EMAIL ?? " NECUNOSCUT "), CARDURI, DATA_DEPUNERE, DATA_FINAL_PERIOADA);
 
             return s;
         }

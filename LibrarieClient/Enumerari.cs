@@ -25,5 +25,6 @@ namespace LibrarieClient
         TELEFON = 7,
         EMAIL = 8,
         CARDURI = 9,      
+        DATADEPUNERE = 10,
     };
 }
