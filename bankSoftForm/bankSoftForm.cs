@@ -7,6 +7,7 @@ using LibrarieClient;
 using NivelAccesDate;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq.Dynamic;
 
 namespace bankSoftForm
 {
@@ -18,31 +19,50 @@ namespace bankSoftForm
         const int MAX_PERIOADA = 1200;
         const int MIN_PERIOADA = 3;
         const int NO_ITEMS_CMB = -1;
-        const int WIDTH_WITHOUT_DATAGRID = 635;
-        const int WIDTH_WITH_DATAGRID = 1250;
 
         IStocareData adminClienti;
         List<string> carduriSelectate = new List<string>();
         public bankSoft()
         {
-            this.BackgroundImage = Properties.Resources.bck7;
             InitializeComponent();
-            this.Width = 635;
             adminClienti = StocareFactory.GetAdministratorStocare();
-            for (int i = 1920; i <= DateTime.UtcNow.Year-18; i++)
+            dataGridClienti.BorderStyle = BorderStyle.None;
+            dataGridClienti.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(238, 239, 249);
+            dataGridClienti.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            dataGridClienti.DefaultCellStyle.SelectionBackColor = Color.FromArgb(40,60,0);
+            dataGridClienti.DefaultCellStyle.SelectionForeColor = Color.WhiteSmoke;
+            dataGridClienti.BackgroundColor = Color.White;
+            dataGridClienti.EnableHeadersVisualStyles = false;
+            dataGridClienti.DefaultCellStyle.ForeColor = Color.Black;
+            dataGridClienti.DefaultCellStyle.Font = new Font("Segoe UI", 8);
+            dataGridClienti.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
+            dataGridClienti.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(40,40,0);
+            dataGridClienti.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+
+            List<Client> clienti = adminClienti.GetClienti();
+            AdaugaClientiInControlDataGridView(clienti);
+
+            for (int i = 1920; i <= DateTime.UtcNow.Year - 18; i++)
             {
 
                 cmbAn.Items.Add(i);
             }
+
+            foreach (DataGridViewColumn column in dataGridClienti.Columns)
+            {
+
+                column.SortMode = DataGridViewColumnSortMode.Automatic;
+            }
         }
-        
+
+        private bool sortAscending = false;
+
         private void NumeText_Enter(object sender, EventArgs e)
         {
             if (textNume.Text == "Nume")
             {
                 textNume.Text = "";
-
-                textNume.ForeColor = Color.Black;
+                textNume.ForeColor = Color.White;
             }
         }
 
@@ -51,7 +71,6 @@ namespace bankSoftForm
             if (textNume.Text == "")
             {
                 textNume.Text = "Nume";
-
                 textNume.ForeColor = Color.Gray;
             }
         }
@@ -61,19 +80,15 @@ namespace bankSoftForm
             if (textPrenume.Text == "Prenume")
             {
                 textPrenume.Text = "";
-
-                textPrenume.ForeColor = Color.Black;
+                textPrenume.ForeColor = Color.White;
             }
         }
-
-
 
         private void PrenumeText_Leave(object sender, EventArgs e)
         {
             if (textPrenume.Text == "")
             {
                 textPrenume.Text = "Prenume";
-
                 textPrenume.ForeColor = Color.Gray;
             }
         }
@@ -84,8 +99,7 @@ namespace bankSoftForm
             if (textCNP.Text == "CNP")
             {
                 textCNP.Text = "";
-
-                textCNP.ForeColor = Color.Black;
+                textCNP.ForeColor = Color.White;
             }
         }
 
@@ -94,7 +108,6 @@ namespace bankSoftForm
             if (textCNP.Text == "")
             {
                 textCNP.Text = "CNP";
-
                 textCNP.ForeColor = Color.Gray;
             }
         }
@@ -105,7 +118,7 @@ namespace bankSoftForm
             {
                 textSold.Text = "";
 
-                textSold.ForeColor = Color.Black;
+                textSold.ForeColor = Color.White;
             }
         }
 
@@ -114,7 +127,6 @@ namespace bankSoftForm
             if (textSold.Text == "")
             {
                 textSold.Text = "Sold [LEI]";
-
                 textSold.ForeColor = Color.Gray;
             }
         }
@@ -124,8 +136,7 @@ namespace bankSoftForm
             if (textPerioadaDep.Text == "Perioada [LUNI]")
             {
                 textPerioadaDep.Text = "";
-
-                textPerioadaDep.ForeColor = Color.Black;
+                textPerioadaDep.ForeColor = Color.White;
             }
         }
 
@@ -134,7 +145,6 @@ namespace bankSoftForm
             if (textPerioadaDep.Text == "")
             {
                 textPerioadaDep.Text = "Perioada [LUNI]";
-
                 textPerioadaDep.ForeColor = Color.Gray;
             }
         }
@@ -144,8 +154,7 @@ namespace bankSoftForm
             if (textTelefon.Text == "Telefon [+40]")
             {
                 textTelefon.Text = "";
-
-                textTelefon.ForeColor = Color.Black;
+                textTelefon.ForeColor = Color.White;
             }
         }
 
@@ -154,7 +163,6 @@ namespace bankSoftForm
             if (textTelefon.Text == "")
             {
                 textTelefon.Text = "Telefon [+40]";
-
                 textTelefon.ForeColor = Color.Gray;
             }
         }
@@ -164,8 +172,7 @@ namespace bankSoftForm
             if (textEmail.Text == "Email")
             {
                 textEmail.Text = "";
-
-                textEmail.ForeColor = Color.Black;
+                textEmail.ForeColor = Color.White;
             }
         }
 
@@ -174,59 +181,36 @@ namespace bankSoftForm
             if (textEmail.Text == "")
             {
                 textEmail.Text = "Email";
-
                 textEmail.ForeColor = Color.Gray;
             }
         }
 
         private void textCauta_Enter(object sender, EventArgs e)
         {
-            if (textCauta.Text == "Cauta [CNP]")
+            if (textCauta.Text == "Caută [CNP]")
             {
                 textCauta.Text = "";
-
-                textCauta.ForeColor = Color.Black;
+                textCauta.ForeColor = Color.White;
             }
         }
 
         private void textCauta_Leave(object sender, EventArgs e)
         {
-            if (textCauta.Text == "")
+            if(textCauta.Text == "")
             {
-                textCauta.Text = "Cauta [CNP]";
-
+                textCauta.Text = "Caută [CNP]";
                 textCauta.ForeColor = Color.Gray;
             }
         }
 
-        private void textValoare_Enter(object sender, EventArgs e)
-        {
-            if (textValoare.Text == "+ Suma")
-            {
-                textValoare.Text = "";
-
-                textValoare.ForeColor = Color.Black;
-            }
-        }
-
-        private void textValoare_Leave(object sender, EventArgs e)
-        {
-            if (textValoare.Text == "")
-            {
-                textValoare.Text = "+ Suma";
-
-                textValoare.ForeColor = Color.Gray;
-            }
-        }
-
-        private CodEroare Validare(string nume, string prenume, string CNP, string sold, string perioada, string telefon, string email,string anulNasterii)
+        private CodEroare Validare(string nume, string prenume, string CNP, string sold, string perioada, string telefon, string email, string AnulNasterii)
         {
             CodEroare rezultatValidare = CodEroare.CORECT;
 
-            bool containsInt = nume.Any(char.IsDigit);
+            bool numeContainsInt = nume.Any(char.IsDigit);
             bool prenumeContainsInt = prenume.Any(char.IsDigit);
 
-            if (nume == "Nume" || containsInt)
+            if (nume == "Nume" || numeContainsInt)
             {
                 rezultatValidare |= CodEroare.NUME_INCORECT;
             }
@@ -237,7 +221,7 @@ namespace bankSoftForm
             }
 
             var isCNPNumeric = int.TryParse(CNP, out _);
-            if (CNP == "CNP" || CNP.Length!=CIFRE_CNP)
+            if (CNP == "CNP" || CNP.Length != CIFRE_CNP)
             {
                 rezultatValidare |= CodEroare.CNP_INCORECT;
             }
@@ -249,20 +233,15 @@ namespace bankSoftForm
             }
 
             var isPerioadaNumeric = int.TryParse(perioada, out _);
-            if (perioada == "Perioada" || !isPerioadaNumeric || Int32.Parse(perioada)>MAX_PERIOADA || Int32.Parse(perioada)<MIN_PERIOADA)
+            if (perioada == "Perioada" || !isPerioadaNumeric || Int32.Parse(perioada) > MAX_PERIOADA || Int32.Parse(perioada) < MIN_PERIOADA)
             {
                 rezultatValidare |= CodEroare.PERIOADA_INCORECT;
             }
 
             var isTelefonNumeric = int.TryParse(telefon, out _);
-            if (telefon == "Telefon [+40]" || telefon.Length !=CIFRE_TELEFON || !isTelefonNumeric)
+            if (telefon == "Telefon [+40]" || telefon.Length != CIFRE_TELEFON || !isTelefonNumeric)
             {
                 rezultatValidare |= CodEroare.TELEFON_INCORECT;
-            }
-
-            if (cmbAn.SelectedIndex == NO_ITEMS_CMB)
-            {
-                rezultatValidare |= CodEroare.ANUL_NASTERII_NESELECTAT;
             }
 
             bool IsValidEmail(string _email)
@@ -281,23 +260,12 @@ namespace bankSoftForm
             if (email == "Email" || !IsValidEmail(email))
             {
                 rezultatValidare |= CodEroare.EMAIL_INCORECT;
-            }
+            } 
 
-            int RaspunsSelectat = 0;
-            foreach (var control in grpRadioTermeni.Controls)
+            if (cmbAn.SelectedIndex == NO_ITEMS_CMB)
             {
-                RadioButton rdb = null;
-                try
-                {
-                    rdb = (RadioButton)control;
-                }
-                catch { }
-
-                if (rdb != null && rdb.Checked == true)
-                    RaspunsSelectat = 1;
+                rezultatValidare |= CodEroare.ANUL_NASTERII_NESELECTAT;
             }
-            if (RaspunsSelectat == 0)
-                rezultatValidare |= CodEroare.NO_RASPUNS_TERMENI;
 
             return rezultatValidare;
         }
@@ -314,25 +282,18 @@ namespace bankSoftForm
             {
                 MarcheazaControaleCuDateIncorecte(codValidare);
             }
-
-            else if(rdbNU.Checked)
+            else if (cmbAn.SelectedIndex > NO_ITEMS_CMB)
             {
-                rdbNU.ForeColor = Color.Red;
-            }
-
-            else if(rdbDA.Checked && cmbAn.SelectedIndex>NO_ITEMS_CMB)
-            {
-                c = new Client(textNume.Text, textPrenume.Text, textCNP.Text, textSold.Text, textPerioadaDep.Text, textTelefon.Text, textEmail.Text);          
-                c.raspunsTRM = GetRaspunsSelectat();
-                c.AnNastere = Int32.Parse(cmbAn.Text);
+                c = new Client(textNume.Text, textPrenume.Text, textCNP.Text, textSold.Text, textPerioadaDep.Text, textTelefon.Text, textEmail.Text);
                 c.Carduri = new List<string>();
                 c.Carduri.AddRange(carduriSelectate);
-                c.DataDepunere = dateDepunere.Value;
-
+                c.DATA_DEPUNERE = DateTime.Now;
+                c.AN_NASTERE = Int32.Parse(cmbAn.Text);
                 adminClienti.AddClient(c);
                 labelAdauga.Text = "Clientul a fost adaugat cu succes.";
-                
                 ResetareControale();
+                List<Client> clienti = adminClienti.GetClienti();
+                AdaugaClientiInControlDataGridView(clienti);
             }
         }
 
@@ -340,96 +301,52 @@ namespace bankSoftForm
         {
             ResetareEtichete();
 
-            RtbAfisare.Clear();
-
             textCauta.ForeColor = Color.Gray;
 
-            List<Client> clienti = adminClienti.GetClienti();           
+            List<Client> clienti = adminClienti.GetClienti();
 
-            foreach (Client c in clienti)
+            string searchValue = textCauta.Text;
+
+            dataGridClienti.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+
+            try
             {
-                if (textCauta.Text == c.CNP)
+                foreach (DataGridViewRow row in dataGridClienti.Rows)
                 {
-                    RtbAfisare.AppendText(c.ConversieLaSir());
-                    RtbAfisare.AppendText(Environment.NewLine);
-                    foreach (var card in grpCards.Controls)
+                    if (row.Cells[4].Value.ToString().Equals(searchValue))
                     {
-                        if (card is CheckBox)
-                        {
-                            var cardBox = card as CheckBox;
-                            foreach (String crd in c.Carduri)
-                                if (cardBox.Text.Equals(crd))
-                                    cardBox.Checked = true;
-                        }
-                    }
-                    textCauta.ForeColor = Color.Gray;
-                }
-                else
-                    textCauta.ForeColor = Color.Red;
-
-                if (textNume.Enabled == true && textPrenume.Enabled == true)
-                {
-                    textNume.Enabled = false;
-                    textPrenume.Enabled = false;
-                    textCNP.Enabled = false;
-                    textSold.Enabled = false;
-                    textPerioadaDep.Enabled = false;
-                    textTelefon.Enabled = false;
-                    textEmail.Enabled = false;
-                    cmbAn.Enabled = false;
-
-                    //dezactivare butoane radio
-                    foreach (var button in grpRadioTermeni.Controls)
-                    {
-                        if (button is RadioButton)
-                        {
-                            var radioButton = button as RadioButton;
-                            radioButton.Enabled = false;
-                        }
-                    }
-                }
-                else
-                {
-                    textNume.Enabled = true;
-                    textPrenume.Enabled = true;
-                    textCNP.Enabled = true;
-                    textSold.Enabled = true;
-                    textPerioadaDep.Enabled = true;
-                    textTelefon.Enabled = true;
-                    textEmail.Enabled = true;
-                    cmbAn.Enabled = true;
-
-                    //activare butoane radio
-                    foreach (var button in grpRadioTermeni.Controls)
-                    {
-                        if (button is RadioButton)
-                        {
-                            var radioButton = button as RadioButton;
-                            radioButton.Enabled = true;
-                        }
+                        row.Selected = true;
+                        break;
                     }
                 }
             }
-        }
-
-        private void butonAdaugaValoare_MouseClick(object sender, MouseEventArgs e)
-        {
-            List <Client>clienti = adminClienti.GetClienti();
-                
-            foreach (Client c in clienti)
+            catch (Exception exc)
             {
-                if (c.CNP==textCauta.Text)
-                {
-                    int sumaActuala = Int32.Parse(c.soldCont);
-                    int sumaAdaugata = Int32.Parse(textValoare.Text);
-                    sumaActuala += sumaAdaugata;
-                    c.soldCont = sumaActuala.ToString();
-                    adminClienti.UpdateClient(c);
-                    Console.WriteLine("{0}", c.soldCont);
-                    labelValoare.ForeColor = Color.Black;
-                    labelValoare.Text = "Suma adaugata cu succes!";                      
-                }
-            }         
+                MessageBox.Show(exc.Message);
+            }
+
+            if (textNume.Enabled == true && textPrenume.Enabled == true)
+            {
+                textNume.Enabled = false;
+                textPrenume.Enabled = false;
+                textCNP.Enabled = false;
+                textSold.Enabled = false;
+                textPerioadaDep.Enabled = false;
+                textTelefon.Enabled = false;
+                textEmail.Enabled = false;
+                cmbAn.Enabled = false;
+            }
+            else
+            {
+                textNume.Enabled = true;
+                textPrenume.Enabled = true;
+                textCNP.Enabled = true;
+                textSold.Enabled = true;
+                textPerioadaDep.Enabled = true;
+                textTelefon.Enabled = true;
+                textEmail.Enabled = true;
+                cmbAn.Enabled = true;
+            }
         }
 
         private void ResetareControale()
@@ -442,7 +359,6 @@ namespace bankSoftForm
             textSold.ForeColor = Color.Gray;
             textPerioadaDep.ForeColor = Color.Gray;
             textCauta.ForeColor = Color.Gray;
-
             textCNP.Text = "CNP";
             textNume.Text = "Nume";
             textPrenume.Text = "Prenume";
@@ -451,26 +367,17 @@ namespace bankSoftForm
             textSold.Text = "Sold [LEI]";
             textPerioadaDep.Text = "Perioada [LUNI]";
             textCauta.Text = "Cauta [CNP]";
-            textValoare.Text = "+ Suma";
 
-            rdbDA.Checked = false;
-            rdbNU.Checked = false;
-            rdbDA.ForeColor = Color.Gray;
-            rdbNU.ForeColor = Color.Gray;
-            ckbMasterCard.Checked = false;
-            ckbVISA.Checked = false;
             cmbAn.ForeColor = Color.Gray;
             cmbAn.Text = "Anul nașterii";
-
+            ckbMasterCard.Checked = false;
+            ckbVISA.Checked = false;
             carduriSelectate.Clear();
         }
 
         public void ResetareEtichete()
         {
             labelAdauga.Text = string.Empty;
-            labelValoare.Text = string.Empty;
-            rdbDA.ForeColor = Color.Gray;
-            rdbDA.ForeColor = Color.Gray;
         }
 
         private void MarcheazaControaleCuDateIncorecte(CodEroare codValidare)
@@ -493,7 +400,7 @@ namespace bankSoftForm
             }
             if ((codValidare & CodEroare.PERIOADA_INCORECT) == CodEroare.PERIOADA_INCORECT)
             {
-                textPerioadaDep.ForeColor = Color.Red;               
+                textPerioadaDep.ForeColor = Color.Red;
             }
             if ((codValidare & CodEroare.SOLD_INCORECT) == CodEroare.SOLD_INCORECT)
             {
@@ -503,85 +410,42 @@ namespace bankSoftForm
             {
                 textTelefon.ForeColor = Color.Red;
             }
-            if ((codValidare & CodEroare.NO_RASPUNS_TERMENI) == CodEroare.NO_RASPUNS_TERMENI)
-            {
-                rdbDA.ForeColor = Color.Red;
-                rdbNU.ForeColor = Color.Red;
-            }
-            if((codValidare & CodEroare.ANUL_NASTERII_NESELECTAT)==CodEroare.ANUL_NASTERII_NESELECTAT)
+            if ((codValidare & CodEroare.ANUL_NASTERII_NESELECTAT) == CodEroare.ANUL_NASTERII_NESELECTAT)
             {
                 cmbAn.ForeColor = Color.Red;
             }
         }
-
-
         private void ckbCarduri_CheckedChanged(object sender, EventArgs e)
         {
-            CheckBox checkBoxControl = sender as CheckBox; //operator 'as'
-            //sau
-            //CheckBox checkBoxControl = (CheckBox)sender;  //operator cast
+            CheckBox checkBoxControl = sender as CheckBox; 
 
             string cardSelectat = checkBoxControl.Text;
 
-            //verificare daca checkbox-ul asupra caruia s-a actionat este selectat
             if (checkBoxControl.Checked == true)
             {
                 carduriSelectate.Add(cardSelectat);
-                rdbNU.ForeColor = Color.Gray;
             }
-                
             else
                 carduriSelectate.Remove(cardSelectat);
         }
 
-        private raspunsTermeni GetRaspunsSelectat()
+        public void AdaugaClientiInControlDataGridView(List<Client> clienti)
         {
-            if (rdbDA.Checked)
-                return raspunsTermeni.RASPUNS_DA;
-            if (rdbNU.Checked)
-                return raspunsTermeni.RASPUNS_NU;
-            
-            return raspunsTermeni.RASPUNS_INEXISTENT;
-        }
-
-        private void btnAfisareLista_MouseClick(object sender, MouseEventArgs e)
-        {
-            ListaClienti listaClienti = new ListaClienti();
-            listaClienti.ShowDialog();
-        }
-
-        bool boolbtnDataGrid = true;
-        private void btnDataGrid_MouseClick(object sender, MouseEventArgs e)
-        {
-            List<Client> clienti = adminClienti.GetClienti();
-            AdaugaClientiInControlDataGridView(clienti);
-
-            if (boolbtnDataGrid)
-            {
-                boolbtnDataGrid = false;
-                this.Width = WIDTH_WITHOUT_DATAGRID;
-            }
-            else
-            {
-                boolbtnDataGrid = true;
-                this.Width = WIDTH_WITH_DATAGRID;
-            }
-        }
-        private void AdaugaClientiInControlDataGridView(List<Client> clienti)
-        {
-            //reset continut control DataGridView
             dataGridClienti.DataSource = null;
-            //personalizare sursa de date
-            dataGridClienti.DataSource = clienti.Select(c => new { c.IDClient, c.Nume, c.Prenume, c.AnNastere, c.CNP,c.soldCont,c.perioadaDepozitare,c.Telefon,c.Email,c.CarduriAsString, c.DataDepunere, c.DataFinalPerioada } ).ToList();
+            dataGridClienti.DataSource = clienti.Select(c => new { c.ID_CLIENT, c.NUME, c.PRENUME, c.AN_NASTERE, c.CNP, c.SOLD_CONT, c.PERIOADA_DEPOZITARE, c.TELEFON, c.EMAIL, c.CARDURI, c.DATA_DEPUNERE, c.DATA_FINAL_PERIOADA,c.DOBANDA,c.SOLD_FINAL }).ToList();
         }
 
-        private void salvareInFisierToolStripMenuItem_Click(object sender, EventArgs e)
+        private void dataGridClienti_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             List<Client> clienti = adminClienti.GetClientiActivi();
-            dataGridClienti.DataSource = clienti.Select(c => new { c.IDClient, c.Nume, c.Prenume, c.AnNastere, c.CNP, c.soldCont, c.perioadaDepozitare, c.Telefon, c.Email, c.CarduriAsString, c.DataDepunere, c.DataFinalPerioada }).ToList();
-            sfd.ShowDialog();
-            salvareRaport(clienti, sfd.FileName);
+            dataGridClienti.DataSource = clienti.Select(c => new { c.ID_CLIENT, c.NUME, c.PRENUME, c.AN_NASTERE, c.CNP, c.SOLD_CONT, c.PERIOADA_DEPOZITARE, c.TELEFON, c.EMAIL, c.CARDURI, c.DATA_DEPUNERE, c.DATA_FINAL_PERIOADA }).ToList();
+            if (sortAscending)
+                dataGridClienti.DataSource = clienti.OrderBy(dataGridClienti.Columns[e.ColumnIndex].DataPropertyName).ToList();
+            else
+                dataGridClienti.DataSource = clienti.OrderBy(dataGridClienti.Columns[e.ColumnIndex].DataPropertyName).Reverse().ToList();
+            sortAscending = !sortAscending;
         }
+
         public void salvareRaport(List<Client> clienti, string numeFisier)
         {
             try
@@ -605,5 +469,68 @@ namespace bankSoftForm
                 throw new Exception("Eroare generica. Mesaj: " + eGen.Message);
             }
         }
+
+        private void dataGridClienti_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            UpdateForm uForm = new UpdateForm();
+            uForm.textNumeUpdate.Text = this.dataGridClienti.CurrentRow.Cells[1].Value.ToString();
+            uForm.textPrenumeUpdate.Text = this.dataGridClienti.CurrentRow.Cells[2].Value.ToString();
+            uForm.textCNPUpdate.Text = this.dataGridClienti.CurrentRow.Cells[4].Value.ToString();
+            uForm.cmbAnUpdate.Text = this.dataGridClienti.CurrentRow.Cells[3].Value.ToString();
+            uForm.textSoldUpdate.Text = this.dataGridClienti.CurrentRow.Cells[5].Value.ToString();
+            uForm.textPerioadaDepUpdate.Text = this.dataGridClienti.CurrentRow.Cells[6].Value.ToString();
+            uForm.textTelefonUpdate.Text = this.dataGridClienti.CurrentRow.Cells[7].Value.ToString();
+            uForm.textEmailUpdate.Text = this.dataGridClienti.CurrentRow.Cells[8].Value.ToString();
+            uForm.dataDepunere = this.dataGridClienti.CurrentRow.Cells[10].Value.ToString();
+            
+            Client c = adminClienti.GetClient(this.dataGridClienti.CurrentRow.Cells[4].Value.ToString());
+
+            foreach (var card in uForm.grpCardsUpdate.Controls)
+            {
+                if (card is CheckBox)
+                {
+                    var cardBox = card as CheckBox;
+                    foreach (String crd in c.Carduri)
+                        if (cardBox.Text.Equals(crd))
+                            cardBox.Checked = true;
+                }
+            }
+
+            uForm.ShowDialog();
+        }
+
+        public void pictureLogo_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            List<Client> clienti = adminClienti.GetClienti();
+            AdaugaClientiInControlDataGridView(clienti);
+        }
+
+        private void stergeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            List<Client> clienti = adminClienti.GetClientiActivi();
+            dataGridClienti.DataSource = clienti.Select(c => new { c.ID_CLIENT, c.NUME, c.PRENUME, c.AN_NASTERE, c.CNP, c.SOLD_CONT, c.PERIOADA_DEPOZITARE, c.TELEFON, c.EMAIL, c.CARDURI, c.DATA_DEPUNERE, c.DATA_FINAL_PERIOADA, c.DOBANDA, c.SOLD_FINAL }).ToList();
+            sfd.ShowDialog();
+            if (sfd.FileName == string.Empty)
+            {
+                MessageBox.Show("Nu s-a efectuat salvarea fisierului!");
+            }        
+            else
+            {
+                salvareRaport(clienti, sfd.FileName);
+                MessageBox.Show("Salvarea fisierului s-a efectuat cu succes!");
+            }
+                
+        }
+
+        private void închideFereastraToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
     }
 }

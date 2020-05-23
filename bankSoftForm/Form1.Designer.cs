@@ -1,8 +1,6 @@
-﻿using System;
-
-namespace bankSoftForm
+﻿namespace bankSoftForm
 {
-    partial class bankSoft
+    partial class Form1
     {
         /// <summary>
         /// Required designer variable.
@@ -30,457 +28,307 @@ namespace bankSoftForm
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(bankSoft));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.butonCauta = new System.Windows.Forms.Button();
+            this.textCauta = new System.Windows.Forms.TextBox();
             this.textNume = new System.Windows.Forms.TextBox();
             this.textPrenume = new System.Windows.Forms.TextBox();
-            this.textSold = new System.Windows.Forms.TextBox();
             this.textCNP = new System.Windows.Forms.TextBox();
-            this.textTelefon = new System.Windows.Forms.TextBox();
+            this.textSold = new System.Windows.Forms.TextBox();
             this.textPerioadaDep = new System.Windows.Forms.TextBox();
+            this.textTelefon = new System.Windows.Forms.TextBox();
             this.textEmail = new System.Windows.Forms.TextBox();
-            this.textCauta = new System.Windows.Forms.TextBox();
-            this.RtbAfisare = new System.Windows.Forms.RichTextBox();
             this.butonAddClient = new System.Windows.Forms.Button();
-            this.labelAdauga = new System.Windows.Forms.Label();
-            this.textValoare = new System.Windows.Forms.TextBox();
-            this.butonAdaugaValoare = new System.Windows.Forms.Button();
-            this.labelValoare = new System.Windows.Forms.Label();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox7 = new System.Windows.Forms.PictureBox();
-            this.pictureBox6 = new System.Windows.Forms.PictureBox();
-            this.pictureBox5 = new System.Windows.Forms.PictureBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.butonCauta = new System.Windows.Forms.Button();
-            this.rdbDA = new System.Windows.Forms.RadioButton();
-            this.rdbNU = new System.Windows.Forms.RadioButton();
-            this.grpRadioTermeni = new System.Windows.Forms.GroupBox();
-            this.ckbMasterCard = new System.Windows.Forms.CheckBox();
-            this.ckbVISA = new System.Windows.Forms.CheckBox();
             this.grpCards = new System.Windows.Forms.GroupBox();
-            this.pictureBox8 = new System.Windows.Forms.PictureBox();
-            this.lblTermeni = new System.Windows.Forms.Label();
-            this.cmbAn = new System.Windows.Forms.ComboBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.grpRadioTermeni.SuspendLayout();
+            this.ckbVISA = new System.Windows.Forms.CheckBox();
+            this.ckbMasterCard = new System.Windows.Forms.CheckBox();
+            this.labelAdauga = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panelSideMenu = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.dataGridClienti = new System.Windows.Forms.DataGridView();
+            this.dateDepunere = new System.Windows.Forms.DateTimePicker();
+            this.panel2.SuspendLayout();
             this.grpCards.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
+            this.panelSideMenu.SuspendLayout();
+            this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridClienti)).BeginInit();
             this.SuspendLayout();
             // 
-            // textNume
+            // panel2
             // 
-            this.textNume.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.textNume.Location = new System.Drawing.Point(72, 33);
-            this.textNume.Name = "textNume";
-            this.textNume.Size = new System.Drawing.Size(100, 20);
-            this.textNume.TabIndex = 0;
-            this.textNume.Text = "Nume";
-            this.textNume.Enter += new System.EventHandler(this.NumeText_Enter);
-            this.textNume.Leave += new System.EventHandler(this.NumeText_Leave);
-            // 
-            // textPrenume
-            // 
-            this.textPrenume.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.textPrenume.Location = new System.Drawing.Point(72, 73);
-            this.textPrenume.Name = "textPrenume";
-            this.textPrenume.Size = new System.Drawing.Size(100, 20);
-            this.textPrenume.TabIndex = 1;
-            this.textPrenume.Text = "Prenume";
-            this.textPrenume.Enter += new System.EventHandler(this.PrenumeText_Enter);
-            this.textPrenume.Leave += new System.EventHandler(this.PrenumeText_Leave);
-            // 
-            // textSold
-            // 
-            this.textSold.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.textSold.Location = new System.Drawing.Point(72, 153);
-            this.textSold.Name = "textSold";
-            this.textSold.Size = new System.Drawing.Size(100, 20);
-            this.textSold.TabIndex = 3;
-            this.textSold.Text = "Sold [LEI]";
-            this.textSold.Enter += new System.EventHandler(this.SoldText_Enter);
-            this.textSold.Leave += new System.EventHandler(this.SoldText_Leave);
-            // 
-            // textCNP
-            // 
-            this.textCNP.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.textCNP.Location = new System.Drawing.Point(72, 113);
-            this.textCNP.Name = "textCNP";
-            this.textCNP.Size = new System.Drawing.Size(100, 20);
-            this.textCNP.TabIndex = 2;
-            this.textCNP.Text = "CNP";
-            this.textCNP.Enter += new System.EventHandler(this.CNPText_Enter);
-            this.textCNP.Leave += new System.EventHandler(this.CNPText_Leave);
-            // 
-            // textTelefon
-            // 
-            this.textTelefon.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.textTelefon.Location = new System.Drawing.Point(72, 232);
-            this.textTelefon.Name = "textTelefon";
-            this.textTelefon.Size = new System.Drawing.Size(100, 20);
-            this.textTelefon.TabIndex = 5;
-            this.textTelefon.Text = "Telefon [+40]";
-            this.textTelefon.Enter += new System.EventHandler(this.TelefonText_Enter);
-            this.textTelefon.Leave += new System.EventHandler(this.TelefonText_Leave);
-            // 
-            // textPerioadaDep
-            // 
-            this.textPerioadaDep.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.textPerioadaDep.Location = new System.Drawing.Point(72, 192);
-            this.textPerioadaDep.Name = "textPerioadaDep";
-            this.textPerioadaDep.Size = new System.Drawing.Size(100, 20);
-            this.textPerioadaDep.TabIndex = 4;
-            this.textPerioadaDep.Text = "Perioada [LUNI]";
-            this.textPerioadaDep.TextChanged += new System.EventHandler(this.textPerioadaDep_TextChanged);
-            this.textPerioadaDep.Enter += new System.EventHandler(this.PerioadaText_Enter);
-            this.textPerioadaDep.Leave += new System.EventHandler(this.PerioadaText_Leave);
-            // 
-            // textEmail
-            // 
-            this.textEmail.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.textEmail.Location = new System.Drawing.Point(72, 271);
-            this.textEmail.Name = "textEmail";
-            this.textEmail.Size = new System.Drawing.Size(100, 20);
-            this.textEmail.TabIndex = 6;
-            this.textEmail.Text = "Email";
-            this.textEmail.Enter += new System.EventHandler(this.EmailText_Enter);
-            this.textEmail.Leave += new System.EventHandler(this.EmailText_Leave);
-            // 
-            // textCauta
-            // 
-            this.textCauta.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.textCauta.Location = new System.Drawing.Point(345, 32);
-            this.textCauta.Name = "textCauta";
-            this.textCauta.Size = new System.Drawing.Size(172, 20);
-            this.textCauta.TabIndex = 7;
-            this.textCauta.Text = "Cauta [CNP]";
-            this.textCauta.Enter += new System.EventHandler(this.textCauta_Enter);
-            this.textCauta.Leave += new System.EventHandler(this.textCauta_Leave);
-            // 
-            // RtbAfisare
-            // 
-            this.RtbAfisare.Location = new System.Drawing.Point(344, 57);
-            this.RtbAfisare.Margin = new System.Windows.Forms.Padding(2);
-            this.RtbAfisare.Name = "RtbAfisare";
-            this.RtbAfisare.Size = new System.Drawing.Size(200, 256);
-            this.RtbAfisare.TabIndex = 12;
-            this.RtbAfisare.Text = "";
-            // 
-            // butonAddClient
-            // 
-            this.butonAddClient.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.butonAddClient.Location = new System.Drawing.Point(72, 419);
-            this.butonAddClient.Name = "butonAddClient";
-            this.butonAddClient.Size = new System.Drawing.Size(75, 23);
-            this.butonAddClient.TabIndex = 13;
-            this.butonAddClient.Text = "Adauga";
-            this.butonAddClient.UseVisualStyleBackColor = true;
-            this.butonAddClient.MouseClick += new System.Windows.Forms.MouseEventHandler(this.butonAddClient_MouseClick);
-            // 
-            // labelAdauga
-            // 
-            this.labelAdauga.AutoSize = true;
-            this.labelAdauga.ForeColor = System.Drawing.Color.Red;
-            this.labelAdauga.Location = new System.Drawing.Point(153, 424);
-            this.labelAdauga.Name = "labelAdauga";
-            this.labelAdauga.Size = new System.Drawing.Size(0, 13);
-            this.labelAdauga.TabIndex = 15;
-            // 
-            // textValoare
-            // 
-            this.textValoare.BackColor = System.Drawing.SystemColors.Window;
-            this.textValoare.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.textValoare.Location = new System.Drawing.Point(344, 318);
-            this.textValoare.Name = "textValoare";
-            this.textValoare.Size = new System.Drawing.Size(100, 20);
-            this.textValoare.TabIndex = 16;
-            this.textValoare.Text = "+ Suma";
-            this.textValoare.Enter += new System.EventHandler(this.textValoare_Enter);
-            // 
-            // butonAdaugaValoare
-            // 
-            this.butonAdaugaValoare.Location = new System.Drawing.Point(450, 318);
-            this.butonAdaugaValoare.Name = "butonAdaugaValoare";
-            this.butonAdaugaValoare.Size = new System.Drawing.Size(25, 20);
-            this.butonAdaugaValoare.TabIndex = 17;
-            this.butonAdaugaValoare.Text = "A";
-            this.butonAdaugaValoare.UseVisualStyleBackColor = true;
-            this.butonAdaugaValoare.MouseClick += new System.Windows.Forms.MouseEventHandler(this.butonAdaugaValoare_MouseClick);
-            // 
-            // labelValoare
-            // 
-            this.labelValoare.AutoSize = true;
-            this.labelValoare.Location = new System.Drawing.Point(341, 341);
-            this.labelValoare.Name = "labelValoare";
-            this.labelValoare.Size = new System.Drawing.Size(0, 13);
-            this.labelValoare.TabIndex = 18;
-            // 
-            // pictureBox4
-            // 
-            this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
-            this.pictureBox4.Location = new System.Drawing.Point(38, 113);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(28, 29);
-            this.pictureBox4.TabIndex = 27;
-            this.pictureBox4.TabStop = false;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(38, 73);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(28, 29);
-            this.pictureBox2.TabIndex = 26;
-            this.pictureBox2.TabStop = false;
-            // 
-            // pictureBox7
-            // 
-            this.pictureBox7.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox7.Image")));
-            this.pictureBox7.Location = new System.Drawing.Point(38, 263);
-            this.pictureBox7.Name = "pictureBox7";
-            this.pictureBox7.Size = new System.Drawing.Size(28, 29);
-            this.pictureBox7.TabIndex = 25;
-            this.pictureBox7.TabStop = false;
-            // 
-            // pictureBox6
-            // 
-            this.pictureBox6.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox6.Image")));
-            this.pictureBox6.Location = new System.Drawing.Point(38, 228);
-            this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(28, 29);
-            this.pictureBox6.TabIndex = 24;
-            this.pictureBox6.TabStop = false;
-            // 
-            // pictureBox5
-            // 
-            this.pictureBox5.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox5.Image")));
-            this.pictureBox5.Location = new System.Drawing.Point(38, 188);
-            this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(28, 29);
-            this.pictureBox5.TabIndex = 23;
-            this.pictureBox5.TabStop = false;
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.Location = new System.Drawing.Point(38, 149);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(28, 28);
-            this.pictureBox3.TabIndex = 21;
-            this.pictureBox3.TabStop = false;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(38, 29);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(28, 29);
-            this.pictureBox1.TabIndex = 19;
-            this.pictureBox1.TabStop = false;
+            this.panel2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel2.BackgroundImage")));
+            this.panel2.Controls.Add(this.butonCauta);
+            this.panel2.Controls.Add(this.textCauta);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel2.Location = new System.Drawing.Point(200, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(786, 78);
+            this.panel2.TabIndex = 1;
             // 
             // butonCauta
             // 
+            this.butonCauta.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.butonCauta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.butonCauta.ForeColor = System.Drawing.Color.DimGray;
             this.butonCauta.Image = ((System.Drawing.Image)(resources.GetObject("butonCauta.Image")));
-            this.butonCauta.Location = new System.Drawing.Point(519, 32);
+            this.butonCauta.Location = new System.Drawing.Point(371, 25);
             this.butonCauta.Name = "butonCauta";
-            this.butonCauta.Size = new System.Drawing.Size(25, 20);
-            this.butonCauta.TabIndex = 14;
-            this.butonCauta.UseVisualStyleBackColor = true;
-            this.butonCauta.MouseClick += new System.Windows.Forms.MouseEventHandler(this.butonCauta_MouseClick);
+            this.butonCauta.Size = new System.Drawing.Size(43, 25);
+            this.butonCauta.TabIndex = 16;
+            this.butonCauta.UseVisualStyleBackColor = false;
             // 
-            // rdbDA
+            // textCauta
             // 
-            this.rdbDA.AutoSize = true;
-            this.rdbDA.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.rdbDA.Location = new System.Drawing.Point(6, 0);
-            this.rdbDA.Name = "rdbDA";
-            this.rdbDA.Size = new System.Drawing.Size(39, 17);
-            this.rdbDA.TabIndex = 28;
-            this.rdbDA.TabStop = true;
-            this.rdbDA.Text = "Da";
-            this.rdbDA.UseVisualStyleBackColor = true;
+            this.textCauta.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.textCauta.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textCauta.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.textCauta.Location = new System.Drawing.Point(127, 29);
+            this.textCauta.Name = "textCauta";
+            this.textCauta.Size = new System.Drawing.Size(247, 20);
+            this.textCauta.TabIndex = 15;
+            this.textCauta.Text = "Caută [CNP]";
             // 
-            // rdbNU
+            // textNume
             // 
-            this.rdbNU.AutoSize = true;
-            this.rdbNU.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.rdbNU.Location = new System.Drawing.Point(62, 0);
-            this.rdbNU.Name = "rdbNU";
-            this.rdbNU.Size = new System.Drawing.Size(39, 17);
-            this.rdbNU.TabIndex = 29;
-            this.rdbNU.TabStop = true;
-            this.rdbNU.Text = "Nu";
-            this.rdbNU.UseVisualStyleBackColor = true;
+            this.textNume.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.textNume.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textNume.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.textNume.Location = new System.Drawing.Point(46, 71);
+            this.textNume.Name = "textNume";
+            this.textNume.Size = new System.Drawing.Size(100, 20);
+            this.textNume.TabIndex = 42;
+            this.textNume.Text = "Nume";
             // 
-            // grpRadioTermeni
+            // textPrenume
             // 
-            this.grpRadioTermeni.BackColor = System.Drawing.SystemColors.Window;
-            this.grpRadioTermeni.Controls.Add(this.rdbNU);
-            this.grpRadioTermeni.Controls.Add(this.rdbDA);
-            this.grpRadioTermeni.Location = new System.Drawing.Point(58, 377);
-            this.grpRadioTermeni.Name = "grpRadioTermeni";
-            this.grpRadioTermeni.Size = new System.Drawing.Size(101, 22);
-            this.grpRadioTermeni.TabIndex = 30;
-            this.grpRadioTermeni.TabStop = false;
+            this.textPrenume.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.textPrenume.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textPrenume.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.textPrenume.Location = new System.Drawing.Point(46, 111);
+            this.textPrenume.Name = "textPrenume";
+            this.textPrenume.Size = new System.Drawing.Size(100, 20);
+            this.textPrenume.TabIndex = 43;
+            this.textPrenume.Text = "Prenume";
             // 
-            // ckbMasterCard
+            // textCNP
             // 
-            this.ckbMasterCard.AutoSize = true;
-            this.ckbMasterCard.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.ckbMasterCard.Location = new System.Drawing.Point(5, 0);
-            this.ckbMasterCard.Name = "ckbMasterCard";
-            this.ckbMasterCard.Size = new System.Drawing.Size(80, 17);
-            this.ckbMasterCard.TabIndex = 31;
-            this.ckbMasterCard.Text = "MasterCard";
-            this.ckbMasterCard.UseVisualStyleBackColor = true;
-            this.ckbMasterCard.CheckedChanged += new System.EventHandler(this.ckbCarduri_CheckedChanged);
+            this.textCNP.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.textCNP.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textCNP.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.textCNP.Location = new System.Drawing.Point(46, 151);
+            this.textCNP.Name = "textCNP";
+            this.textCNP.Size = new System.Drawing.Size(100, 20);
+            this.textCNP.TabIndex = 44;
+            this.textCNP.Text = "CNP";
+            // 
+            // textSold
+            // 
+            this.textSold.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.textSold.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textSold.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.textSold.Location = new System.Drawing.Point(46, 191);
+            this.textSold.Name = "textSold";
+            this.textSold.Size = new System.Drawing.Size(100, 20);
+            this.textSold.TabIndex = 45;
+            this.textSold.Text = "Sold [LEI]";
+            // 
+            // textPerioadaDep
+            // 
+            this.textPerioadaDep.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.textPerioadaDep.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textPerioadaDep.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.textPerioadaDep.Location = new System.Drawing.Point(46, 230);
+            this.textPerioadaDep.Name = "textPerioadaDep";
+            this.textPerioadaDep.Size = new System.Drawing.Size(100, 20);
+            this.textPerioadaDep.TabIndex = 46;
+            this.textPerioadaDep.Text = "Perioada [LUNI]";
+            // 
+            // textTelefon
+            // 
+            this.textTelefon.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.textTelefon.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textTelefon.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.textTelefon.Location = new System.Drawing.Point(46, 270);
+            this.textTelefon.Name = "textTelefon";
+            this.textTelefon.Size = new System.Drawing.Size(100, 20);
+            this.textTelefon.TabIndex = 47;
+            this.textTelefon.Text = "Telefon [+40]";
+            // 
+            // textEmail
+            // 
+            this.textEmail.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.textEmail.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textEmail.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.textEmail.Location = new System.Drawing.Point(46, 309);
+            this.textEmail.Name = "textEmail";
+            this.textEmail.Size = new System.Drawing.Size(100, 20);
+            this.textEmail.TabIndex = 48;
+            this.textEmail.Text = "Email";
+            // 
+            // butonAddClient
+            // 
+            this.butonAddClient.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.butonAddClient.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.butonAddClient.ForeColor = System.Drawing.Color.DimGray;
+            this.butonAddClient.Location = new System.Drawing.Point(57, 472);
+            this.butonAddClient.Name = "butonAddClient";
+            this.butonAddClient.Size = new System.Drawing.Size(75, 23);
+            this.butonAddClient.TabIndex = 49;
+            this.butonAddClient.Text = "Adauga";
+            this.butonAddClient.UseVisualStyleBackColor = false;
+            // 
+            // grpCards
+            // 
+            this.grpCards.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.grpCards.Controls.Add(this.ckbMasterCard);
+            this.grpCards.Controls.Add(this.ckbVISA);
+            this.grpCards.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.grpCards.ForeColor = System.Drawing.Color.DimGray;
+            this.grpCards.Location = new System.Drawing.Point(46, 335);
+            this.grpCards.Name = "grpCards";
+            this.grpCards.Size = new System.Drawing.Size(100, 57);
+            this.grpCards.TabIndex = 58;
+            this.grpCards.TabStop = false;
             // 
             // ckbVISA
             // 
             this.ckbVISA.AutoSize = true;
             this.ckbVISA.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.ckbVISA.Location = new System.Drawing.Point(5, 19);
+            this.ckbVISA.Location = new System.Drawing.Point(6, 34);
             this.ckbVISA.Name = "ckbVISA";
             this.ckbVISA.Size = new System.Drawing.Size(50, 17);
             this.ckbVISA.TabIndex = 32;
             this.ckbVISA.Text = "VISA";
             this.ckbVISA.UseVisualStyleBackColor = true;
-            this.ckbVISA.CheckedChanged += new System.EventHandler(this.ckbCarduri_CheckedChanged);
             // 
-            // grpCards
+            // ckbMasterCard
             // 
-            this.grpCards.BackColor = System.Drawing.SystemColors.Window;
-            this.grpCards.Controls.Add(this.ckbMasterCard);
-            this.grpCards.Controls.Add(this.ckbVISA);
-            this.grpCards.Location = new System.Drawing.Point(72, 309);
-            this.grpCards.Name = "grpCards";
-            this.grpCards.Size = new System.Drawing.Size(100, 36);
-            this.grpCards.TabIndex = 33;
-            this.grpCards.TabStop = false;
+            this.ckbMasterCard.AutoSize = true;
+            this.ckbMasterCard.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.ckbMasterCard.Location = new System.Drawing.Point(6, 11);
+            this.ckbMasterCard.Name = "ckbMasterCard";
+            this.ckbMasterCard.Size = new System.Drawing.Size(80, 17);
+            this.ckbMasterCard.TabIndex = 31;
+            this.ckbMasterCard.Text = "MasterCard";
+            this.ckbMasterCard.UseVisualStyleBackColor = true;
             // 
-            // pictureBox8
+            // labelAdauga
             // 
-            this.pictureBox8.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox8.Image")));
-            this.pictureBox8.Location = new System.Drawing.Point(38, 309);
-            this.pictureBox8.Name = "pictureBox8";
-            this.pictureBox8.Size = new System.Drawing.Size(28, 29);
-            this.pictureBox8.TabIndex = 34;
-            this.pictureBox8.TabStop = false;
+            this.labelAdauga.AutoSize = true;
+            this.labelAdauga.ForeColor = System.Drawing.Color.Red;
+            this.labelAdauga.Location = new System.Drawing.Point(121, 472);
+            this.labelAdauga.Name = "labelAdauga";
+            this.labelAdauga.Size = new System.Drawing.Size(0, 13);
+            this.labelAdauga.TabIndex = 62;
             // 
-            // lblTermeni
+            // panel1
             // 
-            this.lblTermeni.AutoSize = true;
-            this.lblTermeni.BackColor = System.Drawing.SystemColors.Window;
-            this.lblTermeni.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.lblTermeni.Location = new System.Drawing.Point(11, 361);
-            this.lblTermeni.Name = "lblTermeni";
-            this.lblTermeni.Size = new System.Drawing.Size(199, 13);
-            this.lblTermeni.TabIndex = 35;
-            this.lblTermeni.Text = "Sunteți de acord cu termenii și condițiile?";
+            this.panel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel1.BackgroundImage")));
+            this.panel1.Location = new System.Drawing.Point(236, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(563, 47);
+            this.panel1.TabIndex = 63;
             // 
-            // cmbAn
+            // panelSideMenu
             // 
-            this.cmbAn.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.cmbAn.FormattingEnabled = true;
-            this.cmbAn.Location = new System.Drawing.Point(208, 33);
-            this.cmbAn.Name = "cmbAn";
-            this.cmbAn.Size = new System.Drawing.Size(101, 21);
-            this.cmbAn.TabIndex = 36;
-            this.cmbAn.Text = "Anul nașterii";
+            this.panelSideMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(93)))), ((int)(((byte)(97)))));
+            this.panelSideMenu.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panelSideMenu.BackgroundImage")));
+            this.panelSideMenu.Controls.Add(this.dateDepunere);
+            this.panelSideMenu.Controls.Add(this.panel1);
+            this.panelSideMenu.Controls.Add(this.labelAdauga);
+            this.panelSideMenu.Controls.Add(this.grpCards);
+            this.panelSideMenu.Controls.Add(this.butonAddClient);
+            this.panelSideMenu.Controls.Add(this.textEmail);
+            this.panelSideMenu.Controls.Add(this.textTelefon);
+            this.panelSideMenu.Controls.Add(this.textPerioadaDep);
+            this.panelSideMenu.Controls.Add(this.textSold);
+            this.panelSideMenu.Controls.Add(this.textCNP);
+            this.panelSideMenu.Controls.Add(this.textPrenume);
+            this.panelSideMenu.Controls.Add(this.textNume);
+            this.panelSideMenu.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panelSideMenu.Enabled = false;
+            this.panelSideMenu.Location = new System.Drawing.Point(0, 0);
+            this.panelSideMenu.Name = "panelSideMenu";
+            this.panelSideMenu.Size = new System.Drawing.Size(200, 548);
+            this.panelSideMenu.TabIndex = 0;
+            this.panelSideMenu.Paint += new System.Windows.Forms.PaintEventHandler(this.panelSideMenu_Paint);
             // 
-            // bankSoft
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.panel3.Controls.Add(this.dataGridClienti);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel3.Location = new System.Drawing.Point(200, 78);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(786, 470);
+            this.panel3.TabIndex = 17;
+            // 
+            // dataGridClienti
+            // 
+            this.dataGridClienti.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridClienti.GridColor = System.Drawing.SystemColors.ActiveBorder;
+            this.dataGridClienti.Location = new System.Drawing.Point(20, 20);
+            this.dataGridClienti.Name = "dataGridClienti";
+            this.dataGridClienti.Size = new System.Drawing.Size(754, 425);
+            this.dataGridClienti.TabIndex = 0;
+            // 
+            // dateDepunere
+            // 
+            this.dateDepunere.CalendarForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.dateDepunere.CalendarMonthBackground = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.dateDepunere.CalendarTitleBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.dateDepunere.CalendarTitleForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.dateDepunere.CalendarTrailingForeColor = System.Drawing.Color.Goldenrod;
+            this.dateDepunere.Location = new System.Drawing.Point(46, 422);
+            this.dateDepunere.Name = "dateDepunere";
+            this.dateDepunere.Size = new System.Drawing.Size(100, 20);
+            this.dateDepunere.TabIndex = 64;
+            // 
+            // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(607, 452);
-            this.Controls.Add(this.cmbAn);
-            this.Controls.Add(this.lblTermeni);
-            this.Controls.Add(this.pictureBox8);
-            this.Controls.Add(this.grpCards);
-            this.Controls.Add(this.grpRadioTermeni);
-            this.Controls.Add(this.pictureBox4);
-            this.Controls.Add(this.pictureBox2);
-            this.Controls.Add(this.pictureBox7);
-            this.Controls.Add(this.pictureBox6);
-            this.Controls.Add(this.pictureBox5);
-            this.Controls.Add(this.pictureBox3);
-            this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.labelValoare);
-            this.Controls.Add(this.butonAdaugaValoare);
-            this.Controls.Add(this.textValoare);
-            this.Controls.Add(this.labelAdauga);
-            this.Controls.Add(this.butonCauta);
-            this.Controls.Add(this.butonAddClient);
-            this.Controls.Add(this.RtbAfisare);
-            this.Controls.Add(this.textCauta);
-            this.Controls.Add(this.textEmail);
-            this.Controls.Add(this.textTelefon);
-            this.Controls.Add(this.textPerioadaDep);
-            this.Controls.Add(this.textSold);
-            this.Controls.Add(this.textCNP);
-            this.Controls.Add(this.textPrenume);
-            this.Controls.Add(this.textNume);
-            this.ForeColor = System.Drawing.SystemColors.InactiveCaption;
-            this.Name = "bankSoft";
-            this.Text = "bankSoft";
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.grpRadioTermeni.ResumeLayout(false);
-            this.grpRadioTermeni.PerformLayout();
+            this.ClientSize = new System.Drawing.Size(986, 548);
+            this.Controls.Add(this.panel3);
+            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.panelSideMenu);
+            this.Name = "Form1";
+            this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.grpCards.ResumeLayout(false);
             this.grpCards.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
+            this.panelSideMenu.ResumeLayout(false);
+            this.panelSideMenu.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridClienti)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
-        
-
         #endregion
-
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Button butonCauta;
+        private System.Windows.Forms.TextBox textCauta;
         private System.Windows.Forms.TextBox textNume;
         private System.Windows.Forms.TextBox textPrenume;
-        private System.Windows.Forms.TextBox textSold;
         private System.Windows.Forms.TextBox textCNP;
-        private System.Windows.Forms.TextBox textTelefon;
+        private System.Windows.Forms.TextBox textSold;
         private System.Windows.Forms.TextBox textPerioadaDep;
+        private System.Windows.Forms.TextBox textTelefon;
         private System.Windows.Forms.TextBox textEmail;
-        private System.Windows.Forms.TextBox textCauta;
-        private System.Windows.Forms.RichTextBox RtbAfisare;
         private System.Windows.Forms.Button butonAddClient;
-        private System.Windows.Forms.Button butonCauta;
-        private System.Windows.Forms.Label labelAdauga;
-        private System.Windows.Forms.TextBox textValoare;
-        private System.Windows.Forms.Button butonAdaugaValoare;
-        private System.Windows.Forms.Label labelValoare;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.PictureBox pictureBox3;
-        private System.Windows.Forms.PictureBox pictureBox5;
-        private System.Windows.Forms.PictureBox pictureBox6;
-        private System.Windows.Forms.PictureBox pictureBox7;
-        private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.PictureBox pictureBox4;
-        private System.Windows.Forms.RadioButton rdbDA;
-        private System.Windows.Forms.RadioButton rdbNU;
-        private System.Windows.Forms.GroupBox grpRadioTermeni;
+        private System.Windows.Forms.GroupBox grpCards;
         private System.Windows.Forms.CheckBox ckbMasterCard;
         private System.Windows.Forms.CheckBox ckbVISA;
-        private System.Windows.Forms.GroupBox grpCards;
-        private System.Windows.Forms.PictureBox pictureBox8;
-        private System.Windows.Forms.Label lblTermeni;
-        private System.Windows.Forms.ComboBox cmbAn;
+        private System.Windows.Forms.Label labelAdauga;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panelSideMenu;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.DataGridView dataGridClienti;
+        private System.Windows.Forms.DateTimePicker dateDepunere;
     }
 }
-
