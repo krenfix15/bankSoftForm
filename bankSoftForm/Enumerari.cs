@@ -17,7 +17,7 @@ namespace bankSoftForm
         PERIOADA_INCORECT = 32,
         TELEFON_INCORECT = 64,
         EMAIL_INCORECT = 128,
-        NO_RASPUNS_TERMENI = 256,
+        CAUTA_INCORECT = 256,
         ANUL_NASTERII_NESELECTAT = 512
     }
 }

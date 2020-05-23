@@ -7,7 +7,6 @@ using LibrarieClient;
 using NivelAccesDate;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq.Dynamic;
 
 namespace bankSoftForm
 {
@@ -39,6 +38,8 @@ namespace bankSoftForm
             dataGridClienti.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(40,40,0);
             dataGridClienti.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
 
+            btnLogo.FlatAppearance.BorderColor = Color.FromArgb(0, 255, 255, 255);
+
             List<Client> clienti = adminClienti.GetClienti();
             AdaugaClientiInControlDataGridView(clienti);
 
@@ -55,8 +56,22 @@ namespace bankSoftForm
             }
         }
 
-        private bool sortAscending = false;
-
+        private static void EnsureVisibleRow(DataGridView view, int rowToShow)
+        {
+            if (rowToShow >= 0 && rowToShow < view.RowCount)
+            {
+                var countVisible = view.DisplayedRowCount(false);
+                var firstVisible = view.FirstDisplayedScrollingRowIndex;
+                if (rowToShow < firstVisible)
+                {
+                    view.FirstDisplayedScrollingRowIndex = rowToShow;
+                }
+                else if (rowToShow >= firstVisible + countVisible)
+                {
+                    view.FirstDisplayedScrollingRowIndex = rowToShow - countVisible + 1;
+                }
+            }
+        }
         private void NumeText_Enter(object sender, EventArgs e)
         {
             if (textNume.Text == "Nume")
@@ -209,6 +224,7 @@ namespace bankSoftForm
 
             bool numeContainsInt = nume.Any(char.IsDigit);
             bool prenumeContainsInt = prenume.Any(char.IsDigit);
+            bool cnpContainsChar = CNP.Any(char.IsLetter);
 
             if (nume == "Nume" || numeContainsInt)
             {
@@ -221,7 +237,7 @@ namespace bankSoftForm
             }
 
             var isCNPNumeric = int.TryParse(CNP, out _);
-            if (CNP == "CNP" || CNP.Length != CIFRE_CNP)
+            if (CNP == "CNP" || CNP.Length != CIFRE_CNP || cnpContainsChar)
             {
                 rezultatValidare |= CodEroare.CNP_INCORECT;
             }
@@ -260,7 +276,7 @@ namespace bankSoftForm
             if (email == "Email" || !IsValidEmail(email))
             {
                 rezultatValidare |= CodEroare.EMAIL_INCORECT;
-            } 
+            }
 
             if (cmbAn.SelectedIndex == NO_ITEMS_CMB)
             {
@@ -282,6 +298,7 @@ namespace bankSoftForm
             {
                 MarcheazaControaleCuDateIncorecte(codValidare);
             }
+
             else if (cmbAn.SelectedIndex > NO_ITEMS_CMB)
             {
                 c = new Client(textNume.Text, textPrenume.Text, textCNP.Text, textSold.Text, textPerioadaDep.Text, textTelefon.Text, textEmail.Text);
@@ -306,7 +323,7 @@ namespace bankSoftForm
             List<Client> clienti = adminClienti.GetClienti();
 
             string searchValue = textCauta.Text;
-
+            dataGridClienti.ClearSelection();
             dataGridClienti.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
 
             try
@@ -316,36 +333,17 @@ namespace bankSoftForm
                     if (row.Cells[4].Value.ToString().Equals(searchValue))
                     {
                         row.Selected = true;
+                        textCauta.ForeColor = Color.White;
+                        dataGridClienti.FirstDisplayedScrollingRowIndex = row.Index;
                         break;
                     }
+                    else
+                        textCauta.ForeColor = Color.Red;
                 }
             }
             catch (Exception exc)
             {
                 MessageBox.Show(exc.Message);
-            }
-
-            if (textNume.Enabled == true && textPrenume.Enabled == true)
-            {
-                textNume.Enabled = false;
-                textPrenume.Enabled = false;
-                textCNP.Enabled = false;
-                textSold.Enabled = false;
-                textPerioadaDep.Enabled = false;
-                textTelefon.Enabled = false;
-                textEmail.Enabled = false;
-                cmbAn.Enabled = false;
-            }
-            else
-            {
-                textNume.Enabled = true;
-                textPrenume.Enabled = true;
-                textCNP.Enabled = true;
-                textSold.Enabled = true;
-                textPerioadaDep.Enabled = true;
-                textTelefon.Enabled = true;
-                textEmail.Enabled = true;
-                cmbAn.Enabled = true;
             }
         }
 
@@ -378,6 +376,10 @@ namespace bankSoftForm
         public void ResetareEtichete()
         {
             labelAdauga.Text = string.Empty;
+            if (textCauta.Text != "Caută [CNP]")
+                textCauta.ForeColor = Color.White;
+            else
+                textCauta.ForeColor = Color.Gray;
         }
 
         private void MarcheazaControaleCuDateIncorecte(CodEroare codValidare)
@@ -433,16 +435,17 @@ namespace bankSoftForm
         {
             dataGridClienti.DataSource = null;
             dataGridClienti.DataSource = clienti.Select(c => new { c.ID_CLIENT, c.NUME, c.PRENUME, c.AN_NASTERE, c.CNP, c.SOLD_CONT, c.PERIOADA_DEPOZITARE, c.TELEFON, c.EMAIL, c.CARDURI, c.DATA_DEPUNERE, c.DATA_FINAL_PERIOADA,c.DOBANDA,c.SOLD_FINAL }).ToList();
+            
         }
 
+        private bool sortAscending = false;
         private void dataGridClienti_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             List<Client> clienti = adminClienti.GetClientiActivi();
-            dataGridClienti.DataSource = clienti.Select(c => new { c.ID_CLIENT, c.NUME, c.PRENUME, c.AN_NASTERE, c.CNP, c.SOLD_CONT, c.PERIOADA_DEPOZITARE, c.TELEFON, c.EMAIL, c.CARDURI, c.DATA_DEPUNERE, c.DATA_FINAL_PERIOADA }).ToList();
             if (sortAscending)
-                dataGridClienti.DataSource = clienti.OrderBy(dataGridClienti.Columns[e.ColumnIndex].DataPropertyName).ToList();
+                dataGridClienti.DataSource = clienti.Select(c => new { c.ID_CLIENT, c.NUME, c.PRENUME, c.AN_NASTERE, c.CNP, c.SOLD_CONT, c.PERIOADA_DEPOZITARE, c.TELEFON, c.EMAIL, c.CARDURI, c.DATA_DEPUNERE, c.DATA_FINAL_PERIOADA }).OrderBy(c => c.NUME).ToList();
             else
-                dataGridClienti.DataSource = clienti.OrderBy(dataGridClienti.Columns[e.ColumnIndex].DataPropertyName).Reverse().ToList();
+                dataGridClienti.DataSource = clienti.Select(c => new { c.ID_CLIENT, c.NUME, c.PRENUME, c.AN_NASTERE, c.CNP, c.SOLD_CONT, c.PERIOADA_DEPOZITARE, c.TELEFON, c.EMAIL, c.CARDURI, c.DATA_DEPUNERE, c.DATA_FINAL_PERIOADA }).OrderByDescending(c => c.NUME).ToList();
             sortAscending = !sortAscending;
         }
 
@@ -499,10 +502,6 @@ namespace bankSoftForm
             uForm.ShowDialog();
         }
 
-        public void pictureLogo_Click(object sender, EventArgs e)
-        {
-            
-        }
 
         private void toolStripMenuItem1_Click(object sender, EventArgs e)
         {
@@ -531,6 +530,38 @@ namespace bankSoftForm
         {
             this.Close();
         }
+
+        private void afișeazăMeniuliToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            textNume.Enabled = true;
+            textPrenume.Enabled = true;
+            textCNP.Enabled = true;
+            textPerioadaDep.Enabled = true;
+            textSold.Enabled = true;
+            textTelefon.Enabled = true;
+            textEmail.Enabled = true;
+            cmbAn.Enabled = true;
+            grpCards.Enabled = true;
+            butonAddClient.Enabled = true;
+        }
+
+        private void ascundeMeniulToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            textNume.Enabled = false;
+            textPrenume.Enabled = false;
+            textCNP.Enabled = false;
+            textPerioadaDep.Enabled = false;
+            textSold.Enabled = false;
+            textTelefon.Enabled = false;
+            textEmail.Enabled = false;
+            cmbAn.Enabled = false;
+            grpCards.Enabled = false;
+            butonAddClient.Enabled = false;
+        }
+
+        private void buttonLogo_MouseHover(object sender, EventArgs e) => btnLogo.ImageIndex = 1;
+
+        private void buttonLogo_MouseLeave(object sender, EventArgs e) => btnLogo.ImageIndex = 0;
 
     }
 }

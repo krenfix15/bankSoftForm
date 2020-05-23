@@ -39,7 +39,8 @@ namespace bankSoftForm
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.stergeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panelTopSide = new System.Windows.Forms.Panel();
-            this.pictureLogo = new System.Windows.Forms.PictureBox();
+            this.btnLogo = new System.Windows.Forms.Button();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.butonCauta = new System.Windows.Forms.Button();
             this.textCauta = new System.Windows.Forms.TextBox();
             this.panelSideMenu = new System.Windows.Forms.Panel();
@@ -58,11 +59,12 @@ namespace bankSoftForm
             this.textEmail = new System.Windows.Forms.TextBox();
             this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.închideFereastraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ascundeMeniulToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.afișeazăMeniuliToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panelData.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridClienti)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             this.panelTopSide.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureLogo)).BeginInit();
             this.panelSideMenu.SuspendLayout();
             this.grpCards.SuspendLayout();
             this.contextMenuStrip2.SuspendLayout();
@@ -96,13 +98,13 @@ namespace bankSoftForm
             this.toolStripMenuItem1,
             this.stergeToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 70);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(176, 48);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripMenuItem1.Image")));
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(175, 22);
             this.toolStripMenuItem1.Text = "Actualizează Datele";
             this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
             // 
@@ -110,14 +112,14 @@ namespace bankSoftForm
             // 
             this.stergeToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("stergeToolStripMenuItem.Image")));
             this.stergeToolStripMenuItem.Name = "stergeToolStripMenuItem";
-            this.stergeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.stergeToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
             this.stergeToolStripMenuItem.Text = "Salvează în fișier";
             this.stergeToolStripMenuItem.Click += new System.EventHandler(this.stergeToolStripMenuItem_Click);
             // 
             // panelTopSide
             // 
             this.panelTopSide.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panelTopSide.BackgroundImage")));
-            this.panelTopSide.Controls.Add(this.pictureLogo);
+            this.panelTopSide.Controls.Add(this.btnLogo);
             this.panelTopSide.Controls.Add(this.butonCauta);
             this.panelTopSide.Controls.Add(this.textCauta);
             this.panelTopSide.Dock = System.Windows.Forms.DockStyle.Top;
@@ -126,16 +128,30 @@ namespace bankSoftForm
             this.panelTopSide.Size = new System.Drawing.Size(689, 78);
             this.panelTopSide.TabIndex = 1;
             // 
-            // pictureLogo
+            // btnLogo
             // 
-            this.pictureLogo.BackColor = System.Drawing.Color.Transparent;
-            this.pictureLogo.Image = ((System.Drawing.Image)(resources.GetObject("pictureLogo.Image")));
-            this.pictureLogo.Location = new System.Drawing.Point(632, 22);
-            this.pictureLogo.Name = "pictureLogo";
-            this.pictureLogo.Size = new System.Drawing.Size(36, 40);
-            this.pictureLogo.TabIndex = 17;
-            this.pictureLogo.TabStop = false;
-            this.pictureLogo.Click += new System.EventHandler(this.pictureLogo_Click);
+            this.btnLogo.BackColor = System.Drawing.Color.Transparent;
+            this.btnLogo.FlatAppearance.BorderSize = 0;
+            this.btnLogo.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnLogo.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnLogo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLogo.ForeColor = System.Drawing.Color.Transparent;
+            this.btnLogo.ImageIndex = 0;
+            this.btnLogo.ImageList = this.imageList1;
+            this.btnLogo.Location = new System.Drawing.Point(631, 18);
+            this.btnLogo.Name = "btnLogo";
+            this.btnLogo.Size = new System.Drawing.Size(37, 44);
+            this.btnLogo.TabIndex = 18;
+            this.btnLogo.UseVisualStyleBackColor = false;
+            this.btnLogo.MouseLeave += new System.EventHandler(this.buttonLogo_MouseLeave);
+            this.btnLogo.MouseHover += new System.EventHandler(this.buttonLogo_MouseHover);
+            // 
+            // imageList1
+            // 
+            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList1.Images.SetKeyName(0, "Graphicloads-Polygon-Bank.ico");
+            this.imageList1.Images.SetKeyName(1, "Graphicloads-Colorful-Long-Shadow-Bank.ico");
             // 
             // butonCauta
             // 
@@ -252,7 +268,7 @@ namespace bankSoftForm
             this.labelAdauga.AutoSize = true;
             this.labelAdauga.BackColor = System.Drawing.Color.Transparent;
             this.labelAdauga.ForeColor = System.Drawing.Color.White;
-            this.labelAdauga.Location = new System.Drawing.Point(23, 494);
+            this.labelAdauga.Location = new System.Drawing.Point(18, 494);
             this.labelAdauga.Name = "labelAdauga";
             this.labelAdauga.Size = new System.Drawing.Size(0, 13);
             this.labelAdauga.TabIndex = 85;
@@ -349,17 +365,35 @@ namespace bankSoftForm
             // contextMenuStrip2
             // 
             this.contextMenuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.închideFereastraToolStripMenuItem});
+            this.închideFereastraToolStripMenuItem,
+            this.ascundeMeniulToolStripMenuItem,
+            this.afișeazăMeniuliToolStripMenuItem});
             this.contextMenuStrip2.Name = "contextMenuStrip2";
-            this.contextMenuStrip2.Size = new System.Drawing.Size(162, 26);
+            this.contextMenuStrip2.Size = new System.Drawing.Size(168, 70);
             // 
             // închideFereastraToolStripMenuItem
             // 
             this.închideFereastraToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("închideFereastraToolStripMenuItem.Image")));
             this.închideFereastraToolStripMenuItem.Name = "închideFereastraToolStripMenuItem";
-            this.închideFereastraToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
+            this.închideFereastraToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
             this.închideFereastraToolStripMenuItem.Text = "Închide fereastra";
             this.închideFereastraToolStripMenuItem.Click += new System.EventHandler(this.închideFereastraToolStripMenuItem_Click);
+            // 
+            // ascundeMeniulToolStripMenuItem
+            // 
+            this.ascundeMeniulToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("ascundeMeniulToolStripMenuItem.Image")));
+            this.ascundeMeniulToolStripMenuItem.Name = "ascundeMeniulToolStripMenuItem";
+            this.ascundeMeniulToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.ascundeMeniulToolStripMenuItem.Text = "Blochează meniul";
+            this.ascundeMeniulToolStripMenuItem.Click += new System.EventHandler(this.ascundeMeniulToolStripMenuItem_Click);
+            // 
+            // afișeazăMeniuliToolStripMenuItem
+            // 
+            this.afișeazăMeniuliToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("afișeazăMeniuliToolStripMenuItem.Image")));
+            this.afișeazăMeniuliToolStripMenuItem.Name = "afișeazăMeniuliToolStripMenuItem";
+            this.afișeazăMeniuliToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.afișeazăMeniuliToolStripMenuItem.Text = "Activează meniul";
+            this.afișeazăMeniuliToolStripMenuItem.Click += new System.EventHandler(this.afișeazăMeniuliToolStripMenuItem_Click);
             // 
             // bankSoft
             // 
@@ -378,7 +412,6 @@ namespace bankSoftForm
             this.contextMenuStrip1.ResumeLayout(false);
             this.panelTopSide.ResumeLayout(false);
             this.panelTopSide.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureLogo)).EndInit();
             this.panelSideMenu.ResumeLayout(false);
             this.panelSideMenu.PerformLayout();
             this.grpCards.ResumeLayout(false);
@@ -414,9 +447,12 @@ namespace bankSoftForm
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem stergeToolStripMenuItem;
-        private System.Windows.Forms.PictureBox pictureLogo;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip2;
         private System.Windows.Forms.ToolStripMenuItem închideFereastraToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ascundeMeniulToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem afișeazăMeniuliToolStripMenuItem;
+        private System.Windows.Forms.Button btnLogo;
+        private System.Windows.Forms.ImageList imageList1;
     }
 }
 

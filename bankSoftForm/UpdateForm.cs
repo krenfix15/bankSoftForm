@@ -7,7 +7,6 @@ using LibrarieClient;
 using NivelAccesDate;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq.Dynamic;
 
 namespace bankSoftForm
 {
@@ -336,11 +335,9 @@ namespace bankSoftForm
                 {
                     MessageBox.Show("Nu s a realizat actualizarea!");
                 }
-                finally
-                {
-                    bankSoftform.pictureLogo_Click(null, null);
-                }           
             }
         }
+
+
     }
 }

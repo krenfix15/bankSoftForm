@@ -30,6 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UpdateForm));
             this.panelUpdate = new System.Windows.Forms.Panel();
+            this.labelUpdate = new System.Windows.Forms.Label();
+            this.butonUpdateClient = new System.Windows.Forms.Button();
             this.cmbAnUpdate = new System.Windows.Forms.ComboBox();
             this.grpCardsUpdate = new System.Windows.Forms.GroupBox();
             this.ckbMasterCard = new System.Windows.Forms.CheckBox();
@@ -41,8 +43,6 @@
             this.textCNPUpdate = new System.Windows.Forms.TextBox();
             this.textSoldUpdate = new System.Windows.Forms.TextBox();
             this.textPerioadaDepUpdate = new System.Windows.Forms.TextBox();
-            this.butonUpdateClient = new System.Windows.Forms.Button();
-            this.labelUpdate = new System.Windows.Forms.Label();
             this.panelUpdate.SuspendLayout();
             this.grpCardsUpdate.SuspendLayout();
             this.SuspendLayout();
@@ -66,6 +66,29 @@
             this.panelUpdate.Name = "panelUpdate";
             this.panelUpdate.Size = new System.Drawing.Size(333, 348);
             this.panelUpdate.TabIndex = 0;
+            // 
+            // labelUpdate
+            // 
+            this.labelUpdate.AutoSize = true;
+            this.labelUpdate.BackColor = System.Drawing.Color.Transparent;
+            this.labelUpdate.ForeColor = System.Drawing.SystemColors.Window;
+            this.labelUpdate.Location = new System.Drawing.Point(75, 308);
+            this.labelUpdate.Name = "labelUpdate";
+            this.labelUpdate.Size = new System.Drawing.Size(0, 13);
+            this.labelUpdate.TabIndex = 92;
+            // 
+            // butonUpdateClient
+            // 
+            this.butonUpdateClient.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.butonUpdateClient.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.butonUpdateClient.ForeColor = System.Drawing.Color.DimGray;
+            this.butonUpdateClient.Location = new System.Drawing.Point(106, 261);
+            this.butonUpdateClient.Name = "butonUpdateClient";
+            this.butonUpdateClient.Size = new System.Drawing.Size(105, 40);
+            this.butonUpdateClient.TabIndex = 91;
+            this.butonUpdateClient.Text = "Modifica";
+            this.butonUpdateClient.UseVisualStyleBackColor = false;
+            this.butonUpdateClient.MouseClick += new System.Windows.Forms.MouseEventHandler(this.butonUpdateClient_MouseClick);
             // 
             // cmbAnUpdate
             // 
@@ -207,29 +230,6 @@
             this.textPerioadaDepUpdate.Enter += new System.EventHandler(this.PerioadaTextUpdate_Enter);
             this.textPerioadaDepUpdate.Leave += new System.EventHandler(this.PerioadaTextUpdate_Leave);
             // 
-            // butonUpdateClient
-            // 
-            this.butonUpdateClient.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.butonUpdateClient.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.butonUpdateClient.ForeColor = System.Drawing.Color.DimGray;
-            this.butonUpdateClient.Location = new System.Drawing.Point(106, 261);
-            this.butonUpdateClient.Name = "butonUpdateClient";
-            this.butonUpdateClient.Size = new System.Drawing.Size(105, 40);
-            this.butonUpdateClient.TabIndex = 91;
-            this.butonUpdateClient.Text = "Modifica";
-            this.butonUpdateClient.UseVisualStyleBackColor = false;
-            this.butonUpdateClient.MouseClick += new System.Windows.Forms.MouseEventHandler(this.butonUpdateClient_MouseClick);
-            // 
-            // labelUpdate
-            // 
-            this.labelUpdate.AutoSize = true;
-            this.labelUpdate.BackColor = System.Drawing.Color.Transparent;
-            this.labelUpdate.ForeColor = System.Drawing.SystemColors.Window;
-            this.labelUpdate.Location = new System.Drawing.Point(75, 308);
-            this.labelUpdate.Name = "labelUpdate";
-            this.labelUpdate.Size = new System.Drawing.Size(0, 13);
-            this.labelUpdate.TabIndex = 92;
-            // 
             // UpdateForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -237,7 +237,7 @@
             this.ClientSize = new System.Drawing.Size(333, 348);
             this.Controls.Add(this.panelUpdate);
             this.Name = "UpdateForm";
-            this.Text = "Form2";
+            this.Text = "UpdateForm";
             this.panelUpdate.ResumeLayout(false);
             this.panelUpdate.PerformLayout();
             this.grpCardsUpdate.ResumeLayout(false);
