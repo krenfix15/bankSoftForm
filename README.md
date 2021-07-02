@@ -1,5 +1,5 @@
 # bank-software-ui
-This is an app that simulates a Bank Software with user interface to add clients and store their data.
+This is an app that simulates a Bank Software with user interface to add clients and store their data in a text file.
 
 To open the app, you must download it, open the file "bankSoftForm.sln" in Visual Studio, then compile it.
 
